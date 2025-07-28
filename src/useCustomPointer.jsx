@@ -19,13 +19,12 @@ function useCustomPointer(initialValue) {
             setPosition({ x: e.clientX, y: e.clientY })
         }
 
-        window.addEventListener('mousemove', handlePositionMuose);
-        document.body.style.cursor = "none";
+        document.addEventListener('mousemove', handlePositionMuose);
+
 
 
         return () => {
-            window.removeEventListener('mousemove', handlePositionMuose);
-            document.body.style.cursor = '';
+            document.removeEventListener('mousemove', handlePositionMuose);
         }
 
     }, [])
@@ -35,12 +34,9 @@ function useCustomPointer(initialValue) {
             position: "fixed",
             left: position.x,
             top: position.y,
-            pointerEvents: "none",
+            cursor: "none",
             transform: "translate(-50%, -50%)",
-            userSelect: "none",
-            zIndex: 9999,
-            fontSize: "24px",
-            lineHeight: 1,
+            fontSize: "24px"
         }}>
             {initialValue}
         </div>
